@@ -8,11 +8,11 @@
   </head>
   <body>
     <div class="card">
-      <canvas id="3d-canvas" loading="lazy"></canvas>
-      <h2 style="margin-right: 18rem">pop mie</h2>
-      <p style="margin-right: 18.5rem">Rp 5,000</p>
+      <canvas id="3d-canvas1" loading="lazy"></canvas>
+      <h2 style="margin-right: 15rem">Pop Mie</h2>
+      <p style="margin-right: 16rem">Rp 5,000</p>
 
-      <div class="description-section" id="description-section">
+      <div class="description-section" id="description-section1">
         <p>
           Pop Mie adalah salah satu mie instan dalam cup ter-enak se-Indonesia.
         </p>
@@ -21,13 +21,35 @@
       <div class="buttons">
         <button
           class="btn deskripsi"
-          id="deskripsi-btn"
+          id="deskripsi-btn1"
           aria-expanded="false"
-          aria-controls="description-section"
+          aria-controls="description-section1"
         >
           Deskripsi
         </button>
-        <button class="btn beli" id="beli-btn">Beli Sekarang!</button>
+        <button class="btn beli" id="beli-btn1">Beli Sekarang!</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <canvas id="3d-canvas2" loading="lazy"></canvas>
+      <h2 style="margin-right: 16rem">Aqua</h2>
+      <p style="margin-right: 16rem">Rp 3,000</p>
+
+      <div class="description-section" id="description-section2">
+        <p>Aqua adalah merek air mineral terkemuka di Indonesia.</p>
+      </div>
+
+      <div class="buttons">
+        <button
+          class="btn deskripsi"
+          id="deskripsi-btn2"
+          aria-expanded="false"
+          aria-controls="description-section2"
+        >
+          Deskripsi
+        </button>
+        <button class="btn beli" id="beli-btn2">Beli Sekarang!</button>
       </div>
     </div>
 
@@ -39,11 +61,10 @@
       aria-modal="true"
       aria-labelledby="popup-title"
     >
-      <h2 id="popup-title">Pop Mie Berhasil Ditambahkan ke Keranjang!</h2>
+      <h2 id="popup-title">Item Berhasil Ditambahkan ke Keranjang!</h2>
       <form id="payment-form">
         <fieldset>
           <legend>Form Pembayaran</legend>
-
           <label for="name">Nama:</label>
           <input
             type="text"
@@ -52,7 +73,6 @@
             placeholder="Masukkan Nama Anda"
             required
           />
-
           <label for="email">Email:</label>
           <input
             type="email"
@@ -61,7 +81,6 @@
             placeholder="Masukkan Email Anda"
             required
           />
-
           <label for="card-number">Nomor Kartu Kredit:</label>
           <input
             type="text"
@@ -70,7 +89,6 @@
             placeholder="Masukkan Nomor Kartu Anda"
             required
           />
-
           <button type="submit" class="btn submit-btn" style="font-weight: 400">
             Kirim Pembayaran
           </button>
@@ -80,11 +98,8 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
     <script src="main.js"></script>
   </body>
 </html>
