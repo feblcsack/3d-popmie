@@ -1,9 +1,11 @@
 let scene1, camera1, renderer1, canvas1;
 let scene2, camera2, renderer2, canvas2;
+let scene3, camera3, renderer3, canvas3;
 
 function init() {
   initCard1();
   initCard2();
+  initCard3();
 }
 
 function initCard1() {
@@ -79,11 +81,11 @@ function initCard2() {
   document.body.appendChild(loadingIndicator);
 
   loader.load(
-    "/aqua.glb",
+    "/botol.glb",
     function (gltf) {
       loadingIndicator.style.display = "none";
       const model = gltf.scene;
-      model.position.set(0, -1, 0);
+      model.position.set(0, -1.5, 0);
       scene2.add(model);
       animateCard2();
     },
@@ -100,6 +102,53 @@ function initCard2() {
   window.addEventListener("resize", onWindowResize);
 }
 
+function initCard3() {
+  canvas3 = document.getElementById("3d-canvas3");
+  scene3 = new THREE.Scene();
+
+  camera3 = new THREE.PerspectiveCamera(
+    35,
+    canvas3.clientWidth / canvas3.clientHeight,
+    0.1,
+    1000
+  );
+  camera3.position.set(4, 5, 7);
+
+  renderer3 = new THREE.WebGLRenderer({ canvas: canvas3, alpha: true });
+  renderer3.setSize(canvas3.clientWidth, canvas3.clientHeight);
+  renderer3.setPixelRatio(window.devicePixelRatio);
+
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(1, 1, 1);
+  scene3.add(light);
+
+  const loader = new THREE.GLTFLoader();
+  const loadingIndicator = document.createElement("div");
+  loadingIndicator.textContent = "Loading...";
+  document.body.appendChild(loadingIndicator);
+
+  loader.load(
+    "/v2.glb",
+    function (gltf) {
+      loadingIndicator.style.display = "none";
+      const model = gltf.scene;
+      model.position.set(0, -0.5, 0);
+      scene3.add(model);
+      animateCard3();
+    },
+    undefined,
+    function (error) {
+      console.error("Error loading the model:", error);
+      loadingIndicator.textContent = "Failed to load model";
+    }
+  );
+
+  const controls = new THREE.OrbitControls(camera3, renderer3.domElement);
+  controls.enableZoom = true;
+
+  window.addEventListener("resize", onWindowResize);
+}
+
 function onWindowResize() {
   if (canvas1) {
     camera1.aspect = canvas1.clientWidth / canvas1.clientHeight;
@@ -111,6 +160,11 @@ function onWindowResize() {
     camera2.updateProjectionMatrix();
     renderer2.setSize(canvas2.clientWidth, canvas2.clientHeight);
   }
+  if (canvas3) {
+    camera3.aspect = canvas3.clientWidth / canvas3.clientHeight;
+    camera3.updateProjectionMatrix();
+    renderer3.setSize(canvas3.clientWidth, canvas3.clientHeight);
+  }
 }
 
 function animateCard1() {
@@ -121,6 +175,11 @@ function animateCard1() {
 function animateCard2() {
   requestAnimationFrame(animateCard2);
   renderer2.render(scene2, camera2);
+}
+
+function animateCard3() {
+  requestAnimationFrame(animateCard3);
+  renderer3.render(scene3, camera3);
 }
 
 window.onload = init;
