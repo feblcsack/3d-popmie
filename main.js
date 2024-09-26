@@ -1,11 +1,17 @@
 let scene1, camera1, renderer1, canvas1;
 let scene2, camera2, renderer2, canvas2;
 let scene3, camera3, renderer3, canvas3;
+let scene4, camera4, renderer4, canvas4;
+let scene5, camera5, renderer5, canvas5;
+let scene6, camera6, renderer6, canvas6;
 
 function init() {
   initCard1();
   initCard2();
   initCard3();
+  initCard4();
+  initCard5();
+  initCard6();
 }
 
 function initCard1() {
@@ -149,6 +155,147 @@ function initCard3() {
   window.addEventListener("resize", onWindowResize);
 }
 
+function initCard4() {
+  canvas4 = document.getElementById("3d-canvas4");
+  scene4 = new THREE.Scene();
+
+  camera4 = new THREE.PerspectiveCamera(
+    35,
+    canvas4.clientWidth / canvas4.clientHeight,
+    0.1,
+    1000
+  );
+  camera4.position.set(4, 5, 7);
+
+  renderer4 = new THREE.WebGLRenderer({ canvas: canvas4, alpha: true });
+  renderer4.setSize(canvas4.clientWidth, canvas4.clientHeight);
+  renderer4.setPixelRatio(window.devicePixelRatio);
+
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(1, 1, 1);
+  scene4.add(light);
+
+  const loader = new THREE.GLTFLoader();
+  const loadingIndicator = document.createElement("div");
+  loadingIndicator.textContent = "Loading...";
+  document.body.appendChild(loadingIndicator);
+
+  loader.load(
+    "/teh.glb",
+    function (gltf) {
+      loadingIndicator.style.display = "none";
+      const model = gltf.scene;
+      model.position.set(0, -0.5, 0);
+      scene4.add(model);
+      animateCard4();
+    },
+    undefined,
+    function (error) {
+      console.error("Error loading the model:", error);
+      loadingIndicator.textContent = "Failed to load model";
+    }
+  );
+
+  const controls = new THREE.OrbitControls(camera4, renderer4.domElement);
+  controls.enableZoom = true;
+
+  window.addEventListener("resize", onWindowResize);
+}
+
+function initCard5() {
+  canvas5 = document.getElementById("3d-canvas5");
+  scene5 = new THREE.Scene();
+
+  camera5 = new THREE.PerspectiveCamera(
+    35,
+    canvas5.clientWidth / canvas5.clientHeight,
+    0.1,
+    1000
+  );
+  camera5.position.set(5, 5, 7);
+
+  renderer5 = new THREE.WebGLRenderer({ canvas: canvas5, alpha: true });
+  renderer5.setSize(canvas5.clientWidth, canvas5.clientHeight);
+  renderer5.setPixelRatio(window.devicePixelRatio);
+
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(1, 1, 1);
+  scene5.add(light);
+
+  const loader = new THREE.GLTFLoader();
+  const loadingIndicator = document.createElement("div");
+  loadingIndicator.textContent = "Loading...";
+  document.body.appendChild(loadingIndicator);
+
+  loader.load(
+    "/nasduk.glb",
+    function (gltf) {
+      loadingIndicator.style.display = "none";
+      const model = gltf.scene;
+      model.position.set(0, -0.5, 0);
+      scene5.add(model);
+      animateCard5();
+    },
+    undefined,
+    function (error) {
+      console.error("Error loading the model:", error);
+      loadingIndicator.textContent = "Failed to load model";
+    }
+  );
+
+  const controls = new THREE.OrbitControls(camera5, renderer5.domElement);
+  controls.enableZoom = true;
+
+  window.addEventListener("resize", onWindowResize);
+}
+
+function initCard6() {
+  canvas6 = document.getElementById("3d-canvas6");
+  scene6 = new THREE.Scene();
+
+  camera6 = new THREE.PerspectiveCamera(
+    35,
+    canvas6.clientWidth / canvas6.clientHeight,
+    0.1,
+    1000
+  );
+  camera6.position.set(5, 5, 7);
+
+  renderer6 = new THREE.WebGLRenderer({ canvas: canvas6, alpha: true });
+  renderer6.setSize(canvas6.clientWidth, canvas6.clientHeight);
+  renderer6.setPixelRatio(window.devicePixelRatio);
+
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(1, 1, 1);
+  scene6.add(light);
+
+  const loader = new THREE.GLTFLoader();
+  const loadingIndicator = document.createElement("div");
+  loadingIndicator.textContent = "Loading...";
+  document.body.appendChild(loadingIndicator);
+
+  loader.load(
+    "/nasgor.glb",
+    function (gltf) {
+      loadingIndicator.style.display = "none";
+      const model = gltf.scene;
+      model.position.set(0, -0.5, 0);
+      scene6.add(model);
+      animateCard6();
+    },
+    undefined,
+    function (error) {
+      console.error("Error loading the model:", error);
+      loadingIndicator.textContent = "Failed to load model";
+    }
+  );
+
+  const controls = new THREE.OrbitControls(camera6, renderer6.domElement);
+  controls.enableZoom = true;
+
+  window.addEventListener("resize", onWindowResize);
+}
+
 function onWindowResize() {
   if (canvas1) {
     camera1.aspect = canvas1.clientWidth / canvas1.clientHeight;
@@ -165,6 +312,21 @@ function onWindowResize() {
     camera3.updateProjectionMatrix();
     renderer3.setSize(canvas3.clientWidth, canvas3.clientHeight);
   }
+  if (canvas4) {
+    camera4.aspect = canvas4.clientWidth / canvas4.clientHeight;
+    camera4.updateProjectionMatrix();
+    renderer4.setSize(canvas4.clientWidth, canvas4.clientHeight);
+  }
+  if (canvas5) {
+    camera5.aspect = canvas5.clientWidth / canvas5.clientHeight;
+    camera5.updateProjectionMatrix();
+    renderer5.setSize(canvas5.clientWidth, canvas5.clientHeight);
+  }
+  if (canvas6) {
+    camera6.aspect = canvas6.clientWidth / canvas6.clientHeight;
+    camera6.updateProjectionMatrix();
+    renderer6.setSize(canvas6.clientWidth, canvas6.clientHeight);
+  }
 }
 
 function animateCard1() {
@@ -180,6 +342,20 @@ function animateCard2() {
 function animateCard3() {
   requestAnimationFrame(animateCard3);
   renderer3.render(scene3, camera3);
+}
+function animateCard4() {
+  requestAnimationFrame(animateCard4);
+  renderer4.render(scene4, camera4);
+}
+
+function animateCard5() {
+  requestAnimationFrame(animateCard5);
+  renderer5.render(scene5, camera5);
+}
+
+function animateCard6() {
+  requestAnimationFrame(animateCard3);
+  renderer6.render(scene6, camera6);
 }
 
 window.onload = init;

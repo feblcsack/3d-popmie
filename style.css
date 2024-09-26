@@ -63,6 +63,16 @@ body {
   background-color: var(--primary-color);
 }
 
+.card-container {
+  padding-top: 60rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+
 .btn.beli {
   background-color: var(--secondary-color);
 }
@@ -192,6 +202,9 @@ button:focus {
 
 @media (max-width: 600px) {
   .card {
-    width: 90%;
+    width: 80%;
+  }
+  .card-container{
+    padding-top: 160rem;
   }
 }
