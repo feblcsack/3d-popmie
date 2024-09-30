@@ -30,7 +30,11 @@ function initCard1() {
   renderer1.setSize(canvas1.clientWidth, canvas1.clientHeight);
   renderer1.setPixelRatio(window.devicePixelRatio);
 
-  const light = new THREE.DirectionalLight(0xffffff, 1);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // intensitas 0.5
+  scene1.add(ambientLight);
+
+  // Mengubah directional light
+  const light = new THREE.DirectionalLight(0xffffff, 2); // Tingkatkan intensitas menjadi 2
   light.position.set(1, 1, 1);
   scene1.add(light);
 
@@ -124,7 +128,11 @@ function initCard3() {
   renderer3.setSize(canvas3.clientWidth, canvas3.clientHeight);
   renderer3.setPixelRatio(window.devicePixelRatio);
 
-  const light = new THREE.DirectionalLight(0xffffff, 1);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // intensitas 0.5
+  scene3.add(ambientLight);
+
+  // Mengubah directional light
+  const light = new THREE.DirectionalLight(0xffffff, 2); // Tingkatkan intensitas menjadi 2
   light.position.set(1, 1, 1);
   scene3.add(light);
 
@@ -171,7 +179,11 @@ function initCard4() {
   renderer4.setSize(canvas4.clientWidth, canvas4.clientHeight);
   renderer4.setPixelRatio(window.devicePixelRatio);
 
-  const light = new THREE.DirectionalLight(0xffffff, 1);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // intensitas 0.5
+  scene4.add(ambientLight);
+
+  // Mengubah directional light
+  const light = new THREE.DirectionalLight(0xffffff, 5); // Tingkatkan intensitas menjadi 2
   light.position.set(1, 1, 1);
   scene4.add(light);
 
@@ -218,7 +230,11 @@ function initCard5() {
   renderer5.setSize(canvas5.clientWidth, canvas5.clientHeight);
   renderer5.setPixelRatio(window.devicePixelRatio);
 
-  const light = new THREE.DirectionalLight(0xffffff, 1);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // intensitas 0.5
+  scene5.add(ambientLight);
+
+  // Mengubah directional light
+  const light = new THREE.DirectionalLight(0xffffff, 2); // Tingkatkan intensitas menjadi 2
   light.position.set(1, 1, 1);
   scene5.add(light);
 
