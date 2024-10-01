@@ -85,6 +85,10 @@ function initCard2() {
   light.position.set(1, 1, 1);
   scene2.add(light);
 
+  
+
+  
+
   const loader = new THREE.GLTFLoader();
   const loadingIndicator = document.createElement("div");
   loadingIndicator.textContent = "Loading...";
@@ -183,7 +187,7 @@ function initCard4() {
   scene4.add(ambientLight);
 
   // Mengubah directional light
-  const light = new THREE.DirectionalLight(0xffffff, 5); // Tingkatkan intensitas menjadi 2
+  const light = new THREE.DirectionalLight(0xffffff, 1.2); // Tingkatkan intensitas menjadi 2
   light.position.set(1, 1, 1);
   scene4.add(light);
 
@@ -193,7 +197,7 @@ function initCard4() {
   document.body.appendChild(loadingIndicator);
 
   loader.load(
-    "/teh.glb",
+    "/tea.glb",
     function (gltf) {
       loadingIndicator.style.display = "none";
       const model = gltf.scene;
@@ -281,7 +285,10 @@ function initCard6() {
   renderer6.setSize(canvas6.clientWidth, canvas6.clientHeight);
   renderer6.setPixelRatio(window.devicePixelRatio);
 
-  const light = new THREE.DirectionalLight(0xffffff, 1);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // intensitas 0.5
+  scene6.add(ambientLight);
+
+  const light = new THREE.DirectionalLight(0xffffff, 2);
   light.position.set(1, 1, 1);
   scene6.add(light);
 
@@ -291,7 +298,7 @@ function initCard6() {
   document.body.appendChild(loadingIndicator);
 
   loader.load(
-    "/nasgor.glb",
+    "/goreng.glb",
     function (gltf) {
       loadingIndicator.style.display = "none";
       const model = gltf.scene;
@@ -370,7 +377,7 @@ function animateCard5() {
 }
 
 function animateCard6() {
-  requestAnimationFrame(animateCard3);
+  requestAnimationFrame(animateCard6);
   renderer6.render(scene6, camera6);
 }
 
@@ -410,7 +417,7 @@ window.addEventListener("beforeunload", function () {
   if (renderer1) renderer1.dispose();
   if (renderer2) renderer2.dispose();
   scene1.children.forEach((child) => {
-    if (child.geometry) child.geometry.dispose();
+    if (child.geometry) child.geometry.dispose();    
     if (child.material) child.material.dispose();
   });
   scene2.children.forEach((child) => {
