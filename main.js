@@ -30,11 +30,10 @@ function initCard1() {
   renderer1.setSize(canvas1.clientWidth, canvas1.clientHeight);
   renderer1.setPixelRatio(window.devicePixelRatio);
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // intensitas 0.5
+  const ambientLight = new THREE.AmbientLight(0xffffff, 10);
   scene1.add(ambientLight);
 
-  // Mengubah directional light
-  const light = new THREE.DirectionalLight(0xffffff, 2); // Tingkatkan intensitas menjadi 2
+  const light = new THREE.DirectionalLight(0xffffff, 20);
   light.position.set(1, 1, 1);
   scene1.add(light);
 
@@ -85,10 +84,6 @@ function initCard2() {
   light.position.set(1, 1, 1);
   scene2.add(light);
 
-  
-
-  
-
   const loader = new THREE.GLTFLoader();
   const loadingIndicator = document.createElement("div");
   loadingIndicator.textContent = "Loading...";
@@ -132,11 +127,10 @@ function initCard3() {
   renderer3.setSize(canvas3.clientWidth, canvas3.clientHeight);
   renderer3.setPixelRatio(window.devicePixelRatio);
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // intensitas 0.5
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
   scene3.add(ambientLight);
 
-  // Mengubah directional light
-  const light = new THREE.DirectionalLight(0xffffff, 2); // Tingkatkan intensitas menjadi 2
+  const light = new THREE.DirectionalLight(0xffffff, 2);
   light.position.set(1, 1, 1);
   scene3.add(light);
 
@@ -183,11 +177,10 @@ function initCard4() {
   renderer4.setSize(canvas4.clientWidth, canvas4.clientHeight);
   renderer4.setPixelRatio(window.devicePixelRatio);
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // intensitas 0.5
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
   scene4.add(ambientLight);
 
-  // Mengubah directional light
-  const light = new THREE.DirectionalLight(0xffffff, 1.2); // Tingkatkan intensitas menjadi 2
+  const light = new THREE.DirectionalLight(0xffffff, 1.2);
   light.position.set(1, 1, 1);
   scene4.add(light);
 
@@ -234,11 +227,10 @@ function initCard5() {
   renderer5.setSize(canvas5.clientWidth, canvas5.clientHeight);
   renderer5.setPixelRatio(window.devicePixelRatio);
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // intensitas 0.5
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
   scene5.add(ambientLight);
 
-  // Mengubah directional light
-  const light = new THREE.DirectionalLight(0xffffff, 2); // Tingkatkan intensitas menjadi 2
+  const light = new THREE.DirectionalLight(0xffffff, 1.5);
   light.position.set(1, 1, 1);
   scene5.add(light);
 
@@ -285,7 +277,7 @@ function initCard6() {
   renderer6.setSize(canvas6.clientWidth, canvas6.clientHeight);
   renderer6.setPixelRatio(window.devicePixelRatio);
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // intensitas 0.5
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
   scene6.add(ambientLight);
 
   const light = new THREE.DirectionalLight(0xffffff, 2);
@@ -383,8 +375,10 @@ function animateCard6() {
 
 window.onload = init;
 
-
-const beliBtns = [document.getElementById("beli-btn1"), document.getElementById("beli-btn2")];
+const beliBtns = [
+  document.getElementById("beli-btn1"),
+  document.getElementById("beli-btn2"),
+];
 const popup = document.getElementById("popup");
 const overlay = document.getElementById("overlay");
 const closeBtn = document.getElementById("close-btn");
@@ -401,23 +395,30 @@ closeBtn.addEventListener("click", function () {
   overlay.classList.remove("show");
 });
 
-
-const deskripsiBtns = [document.getElementById("deskripsi-btn1"), document.getElementById("deskripsi-btn2")];
-const descriptionSections = [document.getElementById("description-section1"), document.getElementById("description-section2")];
+const deskripsiBtns = [
+  document.getElementById("deskripsi-btn1"),
+  document.getElementById("deskripsi-btn2"),
+];
+const descriptionSections = [
+  document.getElementById("description-section1"),
+  document.getElementById("description-section2"),
+];
 
 deskripsiBtns.forEach((btn, index) => {
   btn.addEventListener("click", function () {
     descriptionSections[index].classList.toggle("active");
-    btn.setAttribute("aria-expanded", descriptionSections[index].classList.contains("active"));
+    btn.setAttribute(
+      "aria-expanded",
+      descriptionSections[index].classList.contains("active")
+    );
   });
 });
-
 
 window.addEventListener("beforeunload", function () {
   if (renderer1) renderer1.dispose();
   if (renderer2) renderer2.dispose();
   scene1.children.forEach((child) => {
-    if (child.geometry) child.geometry.dispose();    
+    if (child.geometry) child.geometry.dispose();
     if (child.material) child.material.dispose();
   });
   scene2.children.forEach((child) => {
