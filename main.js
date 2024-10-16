@@ -280,7 +280,7 @@ function initCard6() {
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
   scene6.add(ambientLight);
 
-  const light = new THREE.DirectionalLight(0xffffff, 2);
+  const light = new THREE.DirectionalLight(0xffffff, 1);
   light.position.set(1, 1, 1);
   scene6.add(light);
 
@@ -290,7 +290,7 @@ function initCard6() {
   document.body.appendChild(loadingIndicator);
 
   loader.load(
-    "/goreng.glb",
+    "/kiyomi.glb",
     function (gltf) {
       loadingIndicator.style.display = "none";
       const model = gltf.scene;
